@@ -32,52 +32,33 @@ function CardComponent (props) {
     }
 
     useEffect(async () => {
-        // async function pingService (id, domain) {
-        //     return await axios({
-        //         method: 'post',
-        //         url: `http://localhost:53459/api/v1/ping?identifier=${id}:${domain}`,
-        //         headers: {"Access-Control-Allow-Origin": "*"}
-        //     })
-        //     .then(() => {
-        //         let response = null || undefined;
-        //         response = axios({
-        //             method: 'get',
-        //             url: 'http://localhost:53459/api/v1/domains',
-        //             headers: {"Access-Control-Allow-Origin": "*"}
-        //         });
-        //         return response
-        //     })
-        // }
         if (id === undefined || id === null || id === "" || url === undefined || url === null || url === "") {
             console.error("id : " + id ,  "url : " + url);
         } else {
             console.log("id : " + id ,  "url : " + url);
-            // let response = await pingService(id, url);
-            // // console.log(response);
-            // return response;
         }
     });
 
     return (
         <div>
-            <Card style={{minHeight: '8em', maxHeight: '8em', minWidth: '15em', maxWidth: '15em', border: '2px solid', margin: '1em'}} id={id}>
+            <Card style={{minHeight: '10.5em', maxHeight: '10.5em', minWidth: '15em', maxWidth: '15em', border: '2px solid', margin: '1em'}} id={id}>
                 <Card.Body style={{marginBottom: '10px;'}}>
-                    <Card.Title><h3><b>{url.replace(/https:\/\/|http:\/\//g, '')}</b></h3></Card.Title>
+                    <Card.Title title="Service Name"><h3><b>{url.replace(/https:\/\/|http:\/\//g, '')}</b></h3></Card.Title>
                     {
                         status === 'Up' ?
-                        <Card.Subtitle style={{backgroundColor: color, color: 'white'}}>Running</Card.Subtitle>
+                        <Card.Subtitle title="Status" style={{backgroundColor: color, color: 'white', padding: '1rem'}}><b>Running</b></Card.Subtitle>
                         :
                         status === 'Down' ? 
-                        <Card.Subtitle style={{backgroundColor: color, color: 'white'}}>Down</Card.Subtitle>
+                        <Card.Subtitle title="Status" style={{backgroundColor: color, color: 'white', padding: '1rem'}}><b>Down</b></Card.Subtitle>
                         : 
-                        <Card.Subtitle style={{backgroundColor: color, color: 'black'}}>Pending</Card.Subtitle>
+                        <Card.Subtitle title="Status" style={{backgroundColor: color, color: 'black', padding: '1rem'}}><b>Pending</b></Card.Subtitle>
                     }
                     <br/>
                     <Card.Link 
                         href={url}
                         style={{ margin: '1em',  marginRight: '2em'}}
                         target="_redirect"
-                        title={url}
+                        title={"URL : " + url}
                     >
                         <LinkIcon fontSize="large" />
                     </Card.Link>
@@ -86,7 +67,7 @@ function CardComponent (props) {
                         style={{ margin: '1em', marginLeft: '2em' }}
                         onClick={onClickRemoveCardComponent}
                         target="_remove"
-                        title={id}
+                        title={"Remove : " + id}
                     >
                         <DeleteForeverSharpIcon fontSize="large" />
                     </Card.Link>

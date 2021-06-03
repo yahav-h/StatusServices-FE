@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 import {TextField, Button} from "@material-ui/core";
-import FiberNewSharpIcon from '@material-ui/icons/FiberNewSharp';
+import SearchSharpIcon from '@material-ui/icons/SearchSharp';
 import SimpleList from "./fragments/SimpleList";
 import {v4 as uuidv4} from "uuid";
 import axios from "axios";
@@ -60,7 +60,7 @@ function AppView () {
           {" "}
           <Button id="add-btn" onClick={onClickAddEnvironmentCard} 
             style={{height: '3.5rem', border: '1px solid #c9c9c9'}}>
-            <FiberNewSharpIcon fontSize="large" />
+            <SearchSharpIcon fontSize="large" />
           </Button>
         </center>
         <br/>
